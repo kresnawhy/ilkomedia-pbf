@@ -3,9 +3,9 @@
 Ilkomedia adalah Social Media untuk mahasiswa Fakultas Ilmu Komputer Universitas Jember
 
 ## Development Resource
-- [Laravel 5.4](https://laravel.com).
-- [DevDojo/Chatter](https://github.com/thedevdojo/chatter).
-- [Friend Finder Web Template](http://mythemestore.com/friend-finder).
+- [Laravel 5.4](https://laravel.com/docs/5.4)
+- [DevDojo/Chatter](https://github.com/thedevdojo/chatter)
+- [Friend Finder Web Template](http://mythemestore.com/friend-finder)
 
 ## How to use
 
