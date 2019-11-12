@@ -12,6 +12,7 @@ Ilkomedia adalah Social Media untuk mahasiswa Fakultas Ilmu Komputer Universitas
 ```
 composer require "devdojo/chatter=0.2.*"
 
+//tambahkan di array providers dalam file config/config.php
 DevDojo\Chatter\ChatterServiceProvider::class,
 
 php artisan vendor:publish --provider="DevDojo\Chatter\ChatterServiceProvider"
