@@ -40,7 +40,7 @@
                                 <form name="registration_form" id='registration_form' class="form-inline" method="POST" action="{{ route('register') }}">
                                     {{ csrf_field() }}
                                     <div class="row">
-                                        <div class="form-group col-xs-6{{ $errors->has('name') ? ' has-error' : '' }}">
+                                        <div class="form-group col-xs-12{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="sr-only">Name</label>
                                             <input id="name" class="form-control input-group-lg" type="text" name="name" title="Enter your name" placeholder="Name" value="{{ old('name') }}" required/>
                                             @if ($errors->has('name'))

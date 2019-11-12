@@ -15,7 +15,7 @@
                                 <h3>Chat</h3>
                                 <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi, consequatur cumque cupiditate debitis dicta doloremque enim ex labore laborum, molestiae nostrum nulla perferendis perspiciatis quasi repudiandae voluptatem voluptatibus. Delectus!</p>
                             </div>
-                            <form action="#">
+                            <form method="get" action="{{ route('chat') }}">
                                 <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Start new Conversation</button>
                             </form>
                         </div>
