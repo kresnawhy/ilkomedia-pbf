@@ -67,3 +67,7 @@ Route::post('register', [
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/chat', 'ChatController@index')->name('chat');
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::post('/profile', 'ProfileController@update_profile');

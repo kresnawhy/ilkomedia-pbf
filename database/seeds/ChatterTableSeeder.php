@@ -19,7 +19,6 @@ class ChatterTableSeeder extends Seeder
                 0 => [
                     'id'             => 1,
                     'name'           => 'Kresna',
-                    'avatar'         => 'https://via.placeholder.com/150',
                     'email'          => 'krach22official@gmail.com',
                     'password'       => '$2y$10$uIyz5vYP7cZFR/lsypTx9.MmBvydotfWX1j/ZG4fiqIF/D48a4owy',
                     'remember_token' => '',

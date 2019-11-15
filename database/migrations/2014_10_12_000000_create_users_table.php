@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('avatar')->default('https://via.placeholder.com/150');
+            $table->string('avatar')->default('user.png');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

@@ -39,23 +39,6 @@
                                 <!--Register Form-->
                                 <form name="registration_form" id='registration_form' class="form-inline" method="POST" action="{{ route('register') }}">
                                     {{ csrf_field() }}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="avatar-upload{{ $errors->has('avatar') ? ' has-error' : '' }}">--}}
-{{--                                            <div class="avatar-edit">--}}
-{{--                                                <input type='file' name="avatar" id="imageUpload" accept=".png, .jpg, .jpeg, .svg" value="{{ old('avatar') }}" required/>--}}
-{{--                                                <label for="imageUpload"></label>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="avatar-preview">--}}
-{{--                                                <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            @if ($errors->has('avatar'))--}}
-{{--                                                <span class="help-block" style="text-align: center">--}}
-{{--                                                    <strong>{{ $errors->first('avatar') }}</strong>--}}
-{{--                                                </span>--}}
-{{--                                            @endif--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                     <div class="row">
                                         <div class="form-group col-xs-12{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="sr-only">Name</label>
