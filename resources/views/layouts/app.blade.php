@@ -80,7 +80,6 @@
         }
         .media-left img {
             margin-left: 17px;
-            margin-bottom: 15px;
             width: 64px;
             border-radius: 64px;
         }
