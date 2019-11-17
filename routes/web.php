@@ -68,6 +68,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/chat', 'ChatController@index')->name('chat');
 
+Route::get('/chat/{id}', 'ChatController@getChat')->name('chats');
+
+Route::post('chat', 'ChatController@sendChat');
+
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::post('/profile', 'ProfileController@update_profile');

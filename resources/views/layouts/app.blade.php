@@ -63,7 +63,7 @@
         }
         .pending {
             position: absolute;
-            left: 45px;
+            left: 63px;
             top: 65px;
             background: #b600ff;
             margin: 0;
@@ -79,6 +79,8 @@
             margin: 0 10px;
         }
         .media-left img {
+            margin-left: 17px;
+            margin-bottom: 15px;
             width: 64px;
             border-radius: 64px;
         }
@@ -137,7 +139,7 @@
          .avatar-upload {
              position: relative;
              max-width: 190px;
-             margin: 10px auto 25px;
+             margin: 20px auto 25px;
          }
          .avatar-upload .avatar-edit {
              position: absolute;
@@ -271,6 +273,8 @@
 <script type="text/javascript" src="{{ asset('app-assets/js/jquery-3.1.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('app-assets/js/masonry.pkgd.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('app-assets/js/script.js') }}"></script>
+<script type="text/javascript" src="https://js.pusher.com/5.0/pusher.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 @yield('js')
 <script>
     function readURL(input) {
@@ -287,6 +291,81 @@
     $("#imageUpload").change(function() {
         readURL(this);
     });
+    var receiver_id = '';
+    var my_id = "{{ Auth::id() }}";
+    $(document).ready(function () {
+        // ajax setup form csrf token
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('16f57a311ec44c74b8e9', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function (data) {
+            if (my_id == data.from) {
+                $('#' + data.to).click();
+            } else if (my_id == data.to) {
+                if (receiver_id == data.from) {
+                    $('#' + data.from).click();
+                } else {
+                    var pending = parseInt($('#' + data.from).find('.pending').html());
+                    if (pending) {
+                        $('#' + data.from).find('.pending').html(pending + 1);
+                    } else {
+                        $('#' + data.from).append('<span class="pending">1</span>');
+                    }
+                }
+            }
+        });
+        $('.user').click(function () {
+            $('.user').removeClass('active');
+            $(this).addClass('active');
+            $(this).find('.pending').remove();
+            receiver_id = $(this).attr('id');
+            $.ajax({
+                type: "get",
+                url: "chat/" + receiver_id, // need to create this route
+                data: "",
+                cache: false,
+                success: function (data) {
+                    $('#chats').html(data);
+                    scrollToBottomFunc();
+                }
+            });
+        });
+        $(document).on('keyup', '.input-text input', function (e) {
+            var chat = $(this).val();
+
+            if (e.keyCode == 13 && chat != '' && receiver_id != '') {
+                $(this).val('');
+                var datastr = "receiver_id=" + receiver_id + "&chat=" + chat;
+                $.ajax({
+                    type: "post",
+                    url: "chat",
+                    data: datastr,
+                    cache: false,
+                    success: function (data) {
+                    },
+                    error: function (jqXHR, status, err) {
+                    },
+                    complete: function () {
+                        scrollToBottomFunc();
+                    }
+                })
+            }
+        });
+    });
+    function scrollToBottomFunc() {
+        $('.chat-wrapper').animate({
+            scrollTop: $('.chat-wrapper').get(0).scrollHeight
+        }, 50);
+    }
 </script>
 </body>
 </html>
