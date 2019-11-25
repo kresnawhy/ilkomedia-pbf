@@ -43,12 +43,13 @@
         li {
             list-style: none;
         }
+
         .user-wrapper, .chat-wrapper {
             border: 1px solid #dddddd;
             overflow-y: auto;
         }
         .user-wrapper {
-            height: 600px;
+            height: 680px;
         }
         .user {
             cursor: pointer;
@@ -88,7 +89,7 @@
         }
         .chat-wrapper {
             padding: 10px;
-            height: 536px;
+            height: 616px;
             background: #eeeeee;
         }
         .chats .chat {
@@ -229,7 +230,7 @@
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 10px 10px">
                                 <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; margin-right: 5px; border-radius:100%">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
